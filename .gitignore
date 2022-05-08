@@ -1,1 +1,5 @@
+.vscode/
 node_modules/
+electroweb-win32-x64/
+dist/
+

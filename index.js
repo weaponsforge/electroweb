@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron')
-const webapp = require('./webserver')
+const webapp = require('./app/webserver')
 
 const createWindow = () => {
   const window = new BrowserWindow({
