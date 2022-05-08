@@ -20,13 +20,19 @@ Testing loading an HTML website (running on an express webserver) in an electron
 2. Install dependencies.  
 `npm install`
 
-## Usage
+## Available Scripts
 
-1. Run the electron app.  
-`npm start`
+### `npm start`
 
-2. Package the electron app as an executable file (**.exe**) for Windows OS. 
-`npm run dist`
+Run the electron app.  
+
+### `npm run dev`
+
+Load the website for localhost development with hot reload (using gulp and browser-sync).
+
+### `npm run dist`
+
+Package the electron app as an executable file (**.exe**) for Windows OS. 
 
 @weaponsforge  
 20220508

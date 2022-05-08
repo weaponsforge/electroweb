@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const browserSync = require('browser-sync').create()
 const root = './app/public'
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 const server = () => {
   browserSync.init({
