@@ -2,9 +2,9 @@
   "name": "electroweb",
   "version": "1.0.0",
   "description": "Testing HTML website rendering in an electron web browser.",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "electron app/",
+    "start": "electron main.js",
     "dev": "gulp dev",
     "dist": "electron-builder --win=portable"
   },
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "D:/LAB/Web/_electron/electroweb.git"
   },
-  "author": "",
+  "author": "weaponsforge",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.27.9",
