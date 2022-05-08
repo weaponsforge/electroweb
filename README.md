@@ -2,6 +2,8 @@
 
 Testing loading an HTML website (running on an express webserver) in an electron web browser.
 
+![screenshot](/resources/screenshot.png)
+
 ## Requirements
 
 1. Windows 10 OS
@@ -32,7 +34,7 @@ Load the website for localhost development with hot reload (using gulp and brows
 
 ### `npm run dist`
 
-Package the electron app as an executable file (**.exe**) for Windows OS. 
+Package the electron app into an executable file (**.exe**) for Windows OS inside the `/dist` directory.
 
 @weaponsforge  
 20220508
