@@ -50,15 +50,19 @@ jobs:
           retention-days: 1
 
   release:
-    - name: Release Built Binary
-      uses: actions/download-artifact@v3
-      with:
-        name: dist
+    name: Release Built Binary
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
     
-    - name: Attach Artifact to Release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        files: Electroweb 1.0.0.exe
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Attach Artifact to Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: Electroweb 1.0.0.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
