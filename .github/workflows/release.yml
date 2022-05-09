@@ -60,9 +60,10 @@ jobs:
 
       - name: Prepare App
         run: |
-          mv Electroweb 1.0.0.exe ${{github.ref_name}}.exe
+          echo ${{github.ref}}
+          mv Electroweb\ 1.0.0.exe electroweb_${{github.ref_name}}.exe
           ls -l -a
-    
+
       - name: Attach Artifact to Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
