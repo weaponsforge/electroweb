@@ -1,0 +1,64 @@
+name: Attach Prebuilt Binary to Release Page
+
+# This workflow will trigger on any tag/release created on *any* branch
+# Make sure to create tags/releases only from the "master" branch for consistency
+on:
+  release:
+    types: [published]
+
+jobs:
+  lint-app:
+    name: Lint and Build App
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v1
+
+      - name: Use NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache dependences
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+          
+      - name: Install dependencies and lint
+        run: |
+          npm install
+          npm run lint
+
+      - name: Packge the executable file
+        run: |
+          cd client
+          npm run dist
+
+      - name: Archive Development Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: |
+            dist/Electroweb 1.0.0.exe
+          retention-days: 1
+
+  release:
+    - name: Release Built Binary
+      uses: actions/download-artifact@v3
+      with:
+        name: dist
+    
+    - name: Attach Artifact to Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: Electroweb 1.0.0.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
