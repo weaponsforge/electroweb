@@ -8,8 +8,8 @@
     "dev": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
     "dist": "npm run build && electron-builder --win=portable",
-    "lint": "eslint app",
-    "lint:fix": "eslint app --fix"
+    "lint": "eslint app .eslintrc.js",
+    "lint:fix": "eslint app .eslintrc.js --fix"
   },
   "repository": {
     "type": "git",
