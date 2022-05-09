@@ -40,5 +40,13 @@ Pack the raw HTML website source for production distribution using webpack insid
 
 Package the electron app into an executable (**.exe**) file for Windows OS inside the `/dist` directory.
 
+### `npm run lint`
+
+Lint the JavaScript files.
+
+### `npm run lint:fix`
+
+Fix lint errors.
+
 @weaponsforge  
 20220508
