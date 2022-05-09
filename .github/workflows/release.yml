@@ -1,4 +1,4 @@
-name: Attach Prebuilt Binary to Release Page
+name: Attach Binary to Release Page
 
 # This workflow will trigger on any tag/release created on *any* branch
 # Make sure to create tags/releases only from the "master" branch for consistency
@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Cache dependences
+      - name: Cache dependencies
         uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -51,7 +51,7 @@ jobs:
 
   release:
     name: Release Built Binary
-    needs: lint
+    needs: lint-app
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifact
