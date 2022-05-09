@@ -32,6 +32,8 @@ jobs:
       - name: Install dependencies and lint
         run: |
           npm install
+          git rm .eslintrc.js
+          git mv .eslintrc_win.js .eslintrc.js
           npm run lint
 
       - name: Packge the executable file
