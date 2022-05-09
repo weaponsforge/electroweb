@@ -1,0 +1,72 @@
+name: Attach Binary to Release Page
+
+# This workflow will trigger on any tag/release created on *any* branch
+# Make sure to create tags/releases only from the "master" branch for consistency
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-on-win:
+    name: Lint and Build App
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v1
+
+      - name: Use NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+          
+      - name: Install dependencies and lint
+        run: |
+          npm install
+          git rm .eslintrc.js
+          git mv .eslintrc_win.js .eslintrc.js
+          npm run lint
+
+      - name: Packge the executable file
+        run: |
+          npm run dist
+
+      - name: Archive Development Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: |
+            dist/Electroweb 1.0.0.exe
+          retention-days: 1
+
+  release:
+    name: Release Built Binary
+    needs: build-on-win
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+
+      - name: Prepare App
+        run: |
+          mv Electroweb\ 1.0.0.exe electroweb_${{github.ref_name}}.exe
+          ls -l -a
+
+      - name: Attach Artifact to Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: electroweb_${{github.ref_name}}.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

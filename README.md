@@ -1,6 +1,6 @@
 ## electroweb
 
-Testing loading an HTML website (running on an express webserver) in an electron web browser.
+Testing loading an HTML website in an electron web browser.
 
 ![screenshot](/resources/screenshot.png)
 
@@ -10,6 +10,8 @@ Testing loading an HTML website (running on an express webserver) in an electron
 2. NodeJS v14.18.3
 
 ### Core Libraries and Frameworks
+
+The following libraries and frameworks are automatically downloaded and installed during installation.
 
 1. electron v18.2.0
 2. electron-builder v23.0.3
