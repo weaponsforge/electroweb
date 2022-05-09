@@ -10,12 +10,15 @@ jobs:
   build-on-win:
     name: Lint and Build App
     runs-on: windows-latest
-    env:
-      REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
     strategy:
       matrix:
         node-version: [14.x]
     steps:
+      - name: Initialize Git
+        run: |
+          git config core.autocrlf false
+          git rm --cached -r .
+
       - name: Checkout the repository
         uses: actions/checkout@v1
 
