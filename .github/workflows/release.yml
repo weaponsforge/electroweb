@@ -57,8 +57,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: dist
-        run:
-          - echo ls -l -a
+
+      - name: List files
+        run: ls -l -1
     
       - name: Attach Artifact to Release
         uses: softprops/action-gh-release@v1
