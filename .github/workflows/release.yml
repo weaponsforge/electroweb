@@ -38,7 +38,6 @@ jobs:
 
       - name: Packge the executable file
         run: |
-          cd client
           npm run dist
 
       - name: Archive Development Artifact
@@ -63,6 +62,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: Electroweb 1.0.0.exe
+          files: dist/Electroweb 1.0.0.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
