@@ -11,6 +11,8 @@ Testing loading an HTML website in an electron web browser.
 
 ### Core Libraries and Frameworks
 
+The following libraries and frameworks are automatically downloaded and installed during installation.
+
 1. electron v18.2.0
 2. electron-builder v23.0.3
 
