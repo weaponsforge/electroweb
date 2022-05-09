@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require('electron')
-// const webapp = require('./app/webserver')
 const path = require('path')
+// const webapp = require('./app/webserver')
 
 const createWindow = () => {
   const window = new BrowserWindow({
@@ -9,7 +9,7 @@ const createWindow = () => {
   })
 
   // window.loadURL('http://localhost:3000')
-  window.loadFile(path.resolve(__dirname, 'app', 'public', 'index.html'))
+  window.loadFile(path.resolve(__dirname, 'build', 'index.html'))
 }
 
 app.whenReady().then(() => {

@@ -30,11 +30,15 @@ Run the electron app.
 
 ### `npm run dev`
 
-Load the website for localhost development with hot reload (using gulp and browser-sync).
+Load the website for localhost development with hot reload (using webpack 5).
+
+### `npm run build`
+
+Pack the raw HTML website source for production distribution using webpack inside the `/build` directory.
 
 ### `npm run dist`
 
-Package the electron app into an executable file (**.exe**) for Windows OS inside the `/dist` directory.
+Package the electron app into an executable (**.exe**) file for Windows OS inside the `/dist` directory.
 
 @weaponsforge  
 20220508
