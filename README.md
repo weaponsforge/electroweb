@@ -1,6 +1,6 @@
 ## electroweb
 
-Testing loading an HTML website (running on an express webserver) in an electron web browser.
+Testing loading an HTML website in an electron web browser.
 
 ![screenshot](/resources/screenshot.png)
 
